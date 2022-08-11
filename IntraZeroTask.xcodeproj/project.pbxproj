@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07A09516BF3F53354671E709 /* Pods_IntraZeroTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5446B78D8E734F078CEF2604 /* Pods_IntraZeroTaskTests.framework */; };
+		646C39EECAE004B811E59B6C /* Pods_IntraZeroTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0123F9C2BBEF3F31BE32F203 /* Pods_IntraZeroTask.framework */; };
 		9B92645B28A5AE9800B1BA7F /* IntraZeroTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92645A28A5AE9800B1BA7F /* IntraZeroTaskApp.swift */; };
 		9B92645D28A5AE9800B1BA7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92645C28A5AE9800B1BA7F /* ContentView.swift */; };
 		9B92645F28A5AE9C00B1BA7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B92645E28A5AE9C00B1BA7F /* Assets.xcassets */; };
@@ -14,6 +16,18 @@
 		9B92646C28A5AE9D00B1BA7F /* IntraZeroTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92646B28A5AE9D00B1BA7F /* IntraZeroTaskTests.swift */; };
 		9B92647628A5AE9D00B1BA7F /* IntraZeroTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92647528A5AE9D00B1BA7F /* IntraZeroTaskUITests.swift */; };
 		9B92647828A5AE9D00B1BA7F /* IntraZeroTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92647728A5AE9D00B1BA7F /* IntraZeroTaskUITestsLaunchTests.swift */; };
+		9B92648728A5AF0300B1BA7F /* PhotoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92648628A5AF0300B1BA7F /* PhotoListView.swift */; };
+		9B92648A28A5AF3500B1BA7F /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92648928A5AF3500B1BA7F /* PhotosListViewModel.swift */; };
+		9B92648E28A5AFCC00B1BA7F /* PhotosDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92648D28A5AFCC00B1BA7F /* PhotosDetails.swift */; };
+		9B92649128A5AFFD00B1BA7F /* PhotosDetailsViewModek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92649028A5AFFD00B1BA7F /* PhotosDetailsViewModek.swift */; };
+		9B92649728A5B0F700B1BA7F /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92649628A5B0F700B1BA7F /* BaseAPI.swift */; };
+		9B92649928A5B12E00B1BA7F /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92649828A5B12E00B1BA7F /* TargetType.swift */; };
+		9B92649C28A5B18800B1BA7F /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92649B28A5B18800B1BA7F /* NetworkRequest.swift */; };
+		9B92649E28A5B1FA00B1BA7F /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92649D28A5B1FA00B1BA7F /* NetworkAPI.swift */; };
+		9B9264A128A5B29000B1BA7F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A028A5B29000B1BA7F /* PersistenceController.swift */; };
+		9B9264A428A5B2BA00B1BA7F /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A228A5B2BA00B1BA7F /* Stash.xcdatamodeld */; };
+		9B9264A728A5B36B00B1BA7F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A628A5B36B00B1BA7F /* Photo.swift */; };
+		F5B6B8B6D1ADC512F3F4ACDA /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4B52FCDB3D7B3E1275968D /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0123F9C2BBEF3F31BE32F203 /* Pods_IntraZeroTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3479A6BDBF8C3D55C0FE580B /* Pods-IntraZeroTaskTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTaskTests.debug.xcconfig"; path = "Target Support Files/Pods-IntraZeroTaskTests/Pods-IntraZeroTaskTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3AC0E44EF6199E6F65EF37BE /* Pods-IntraZeroTask-IntraZeroTaskUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTask-IntraZeroTaskUITests.debug.xcconfig"; path = "Target Support Files/Pods-IntraZeroTask-IntraZeroTaskUITests/Pods-IntraZeroTask-IntraZeroTaskUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		45EC032F94BC02CE07A7B134 /* Pods-IntraZeroTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTask.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask.release.xcconfig"; sourceTree = "<group>"; };
+		5446B78D8E734F078CEF2604 /* Pods_IntraZeroTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		54B538F0F4B6D92D16FCF38F /* Pods-IntraZeroTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTask.debug.xcconfig"; path = "Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask.debug.xcconfig"; sourceTree = "<group>"; };
+		9A4B52FCDB3D7B3E1275968D /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTask_IntraZeroTaskUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92645728A5AE9800B1BA7F /* IntraZeroTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntraZeroTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92645A28A5AE9800B1BA7F /* IntraZeroTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntraZeroTaskApp.swift; sourceTree = "<group>"; };
 		9B92645C28A5AE9800B1BA7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +65,19 @@
 		9B92647128A5AE9D00B1BA7F /* IntraZeroTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IntraZeroTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92647528A5AE9D00B1BA7F /* IntraZeroTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntraZeroTaskUITests.swift; sourceTree = "<group>"; };
 		9B92647728A5AE9D00B1BA7F /* IntraZeroTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntraZeroTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9B92648628A5AF0300B1BA7F /* PhotoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListView.swift; sourceTree = "<group>"; };
+		9B92648928A5AF3500B1BA7F /* PhotosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
+		9B92648D28A5AFCC00B1BA7F /* PhotosDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDetails.swift; sourceTree = "<group>"; };
+		9B92649028A5AFFD00B1BA7F /* PhotosDetailsViewModek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDetailsViewModek.swift; sourceTree = "<group>"; };
+		9B92649628A5B0F700B1BA7F /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		9B92649828A5B12E00B1BA7F /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		9B92649B28A5B18800B1BA7F /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		9B92649D28A5B1FA00B1BA7F /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		9B9264A028A5B29000B1BA7F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		9B9264A328A5B2BA00B1BA7F /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
+		9B9264A628A5B36B00B1BA7F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		9F52803DE794A69CB9EE4729 /* Pods-IntraZeroTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTaskTests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTaskTests/Pods-IntraZeroTaskTests.release.xcconfig"; sourceTree = "<group>"; };
+		E1DF6CA0A9163A92456C4932 /* Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTask-IntraZeroTaskUITests/Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				646C39EECAE004B811E59B6C /* Pods_IntraZeroTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A09516BF3F53354671E709 /* Pods_IntraZeroTaskTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +101,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B6B8B6D1ADC512F3F4ACDA /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		009CC3C5B7EEE94D02CF7233 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54B538F0F4B6D92D16FCF38F /* Pods-IntraZeroTask.debug.xcconfig */,
+				45EC032F94BC02CE07A7B134 /* Pods-IntraZeroTask.release.xcconfig */,
+				3AC0E44EF6199E6F65EF37BE /* Pods-IntraZeroTask-IntraZeroTaskUITests.debug.xcconfig */,
+				E1DF6CA0A9163A92456C4932 /* Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig */,
+				3479A6BDBF8C3D55C0FE580B /* Pods-IntraZeroTaskTests.debug.xcconfig */,
+				9F52803DE794A69CB9EE4729 /* Pods-IntraZeroTaskTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9486E678C3004AF7BDA42E95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0123F9C2BBEF3F31BE32F203 /* Pods_IntraZeroTask.framework */,
+				9A4B52FCDB3D7B3E1275968D /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework */,
+				5446B78D8E734F078CEF2604 /* Pods_IntraZeroTaskTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9B92644E28A5AE9800B1BA7F = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +139,8 @@
 				9B92646A28A5AE9D00B1BA7F /* IntraZeroTaskTests */,
 				9B92647428A5AE9D00B1BA7F /* IntraZeroTaskUITests */,
 				9B92645828A5AE9800B1BA7F /* Products */,
+				009CC3C5B7EEE94D02CF7233 /* Pods */,
+				9486E678C3004AF7BDA42E95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +157,9 @@
 		9B92645928A5AE9800B1BA7F /* IntraZeroTask */ = {
 			isa = PBXGroup;
 			children = (
+				9B9264A528A5B35500B1BA7F /* Model */,
+				9B92649328A5B04800B1BA7F /* Services */,
+				9B92649228A5B03500B1BA7F /* Views */,
 				9B92645A28A5AE9800B1BA7F /* IntraZeroTaskApp.swift */,
 				9B92645C28A5AE9800B1BA7F /* ContentView.swift */,
 				9B92645E28A5AE9C00B1BA7F /* Assets.xcassets */,
@@ -127,6 +193,118 @@
 			path = IntraZeroTaskUITests;
 			sourceTree = "<group>";
 		};
+		9B92648428A5AEC100B1BA7F /* PhotosList */ = {
+			isa = PBXGroup;
+			children = (
+				9B92648828A5AF0E00B1BA7F /* PhotosListViewModel */,
+				9B92648528A5AED400B1BA7F /* PhotosListView */,
+			);
+			path = PhotosList;
+			sourceTree = "<group>";
+		};
+		9B92648528A5AED400B1BA7F /* PhotosListView */ = {
+			isa = PBXGroup;
+			children = (
+				9B92648628A5AF0300B1BA7F /* PhotoListView.swift */,
+			);
+			path = PhotosListView;
+			sourceTree = "<group>";
+		};
+		9B92648828A5AF0E00B1BA7F /* PhotosListViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9B92648928A5AF3500B1BA7F /* PhotosListViewModel.swift */,
+			);
+			path = PhotosListViewModel;
+			sourceTree = "<group>";
+		};
+		9B92648B28A5AF9C00B1BA7F /* PhotosDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9B92648F28A5AFD400B1BA7F /* PhotosDetailsViewModel */,
+				9B92648C28A5AFA700B1BA7F /* PhotosDetailsVIew */,
+			);
+			path = PhotosDetails;
+			sourceTree = "<group>";
+		};
+		9B92648C28A5AFA700B1BA7F /* PhotosDetailsVIew */ = {
+			isa = PBXGroup;
+			children = (
+				9B92648D28A5AFCC00B1BA7F /* PhotosDetails.swift */,
+			);
+			path = PhotosDetailsVIew;
+			sourceTree = "<group>";
+		};
+		9B92648F28A5AFD400B1BA7F /* PhotosDetailsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9B92649028A5AFFD00B1BA7F /* PhotosDetailsViewModek.swift */,
+			);
+			path = PhotosDetailsViewModel;
+			sourceTree = "<group>";
+		};
+		9B92649228A5B03500B1BA7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B92648B28A5AF9C00B1BA7F /* PhotosDetails */,
+				9B92648428A5AEC100B1BA7F /* PhotosList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9B92649328A5B04800B1BA7F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9B92649F28A5B21700B1BA7F /* CoreDataServices */,
+				9B92649428A5B05800B1BA7F /* NetworkLayer */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9B92649428A5B05800B1BA7F /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9B92649A28A5B13A00B1BA7F /* API Connection */,
+				9B92649528A5B0CE00B1BA7F /* Base */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		9B92649528A5B0CE00B1BA7F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9B92649628A5B0F700B1BA7F /* BaseAPI.swift */,
+				9B92649828A5B12E00B1BA7F /* TargetType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		9B92649A28A5B13A00B1BA7F /* API Connection */ = {
+			isa = PBXGroup;
+			children = (
+				9B92649B28A5B18800B1BA7F /* NetworkRequest.swift */,
+				9B92649D28A5B1FA00B1BA7F /* NetworkAPI.swift */,
+			);
+			path = "API Connection";
+			sourceTree = "<group>";
+		};
+		9B92649F28A5B21700B1BA7F /* CoreDataServices */ = {
+			isa = PBXGroup;
+			children = (
+				9B9264A028A5B29000B1BA7F /* PersistenceController.swift */,
+				9B9264A228A5B2BA00B1BA7F /* Stash.xcdatamodeld */,
+			);
+			path = CoreDataServices;
+			sourceTree = "<group>";
+		};
+		9B9264A528A5B35500B1BA7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B9264A628A5B36B00B1BA7F /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +312,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B92647B28A5AE9D00B1BA7F /* Build configuration list for PBXNativeTarget "IntraZeroTask" */;
 			buildPhases = (
+				BDB73A9F819DC95ECD4CB064 /* [CP] Check Pods Manifest.lock */,
 				9B92645328A5AE9800B1BA7F /* Sources */,
 				9B92645428A5AE9800B1BA7F /* Frameworks */,
 				9B92645528A5AE9800B1BA7F /* Resources */,
+				15AF4EF9EADC82BFE2DFAFE2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +331,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B92647E28A5AE9D00B1BA7F /* Build configuration list for PBXNativeTarget "IntraZeroTaskTests" */;
 			buildPhases = (
+				F0C5354DF6FB2DF3A3C46257 /* [CP] Check Pods Manifest.lock */,
 				9B92646328A5AE9D00B1BA7F /* Sources */,
 				9B92646428A5AE9D00B1BA7F /* Frameworks */,
 				9B92646528A5AE9D00B1BA7F /* Resources */,
@@ -169,9 +350,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B92648128A5AE9D00B1BA7F /* Build configuration list for PBXNativeTarget "IntraZeroTaskUITests" */;
 			buildPhases = (
+				A5FCDF63B50FD358FE4918FF /* [CP] Check Pods Manifest.lock */,
 				9B92646D28A5AE9D00B1BA7F /* Sources */,
 				9B92646E28A5AE9D00B1BA7F /* Frameworks */,
 				9B92646F28A5AE9D00B1BA7F /* Resources */,
+				993C5899389454982FE8F68D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,13 +435,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15AF4EF9EADC82BFE2DFAFE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		993C5899389454982FE8F68D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask-IntraZeroTaskUITests/Pods-IntraZeroTask-IntraZeroTaskUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask-IntraZeroTaskUITests/Pods-IntraZeroTask-IntraZeroTaskUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask-IntraZeroTaskUITests/Pods-IntraZeroTask-IntraZeroTaskUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5FCDF63B50FD358FE4918FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntraZeroTask-IntraZeroTaskUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDB73A9F819DC95ECD4CB064 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntraZeroTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0C5354DF6FB2DF3A3C46257 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntraZeroTaskTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9B92645328A5AE9800B1BA7F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9B92645D28A5AE9800B1BA7F /* ContentView.swift in Sources */,
+				9B92649E28A5B1FA00B1BA7F /* NetworkAPI.swift in Sources */,
+				9B92648A28A5AF3500B1BA7F /* PhotosListViewModel.swift in Sources */,
 				9B92645B28A5AE9800B1BA7F /* IntraZeroTaskApp.swift in Sources */,
+				9B9264A128A5B29000B1BA7F /* PersistenceController.swift in Sources */,
+				9B92648E28A5AFCC00B1BA7F /* PhotosDetails.swift in Sources */,
+				9B9264A728A5B36B00B1BA7F /* Photo.swift in Sources */,
+				9B92649928A5B12E00B1BA7F /* TargetType.swift in Sources */,
+				9B92648728A5AF0300B1BA7F /* PhotoListView.swift in Sources */,
+				9B92649128A5AFFD00B1BA7F /* PhotosDetailsViewModek.swift in Sources */,
+				9B9264A428A5B2BA00B1BA7F /* Stash.xcdatamodeld in Sources */,
+				9B92649C28A5B18800B1BA7F /* NetworkRequest.swift in Sources */,
+				9B92649728A5B0F700B1BA7F /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +708,7 @@
 		};
 		9B92647C28A5AE9D00B1BA7F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54B538F0F4B6D92D16FCF38F /* Pods-IntraZeroTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -439,6 +737,7 @@
 		};
 		9B92647D28A5AE9D00B1BA7F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45EC032F94BC02CE07A7B134 /* Pods-IntraZeroTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -467,6 +766,7 @@
 		};
 		9B92647F28A5AE9D00B1BA7F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3479A6BDBF8C3D55C0FE580B /* Pods-IntraZeroTaskTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -486,6 +786,7 @@
 		};
 		9B92648028A5AE9D00B1BA7F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F52803DE794A69CB9EE4729 /* Pods-IntraZeroTaskTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -505,6 +806,7 @@
 		};
 		9B92648228A5AE9D00B1BA7F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AC0E44EF6199E6F65EF37BE /* Pods-IntraZeroTask-IntraZeroTaskUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,6 +824,7 @@
 		};
 		9B92648328A5AE9D00B1BA7F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1DF6CA0A9163A92456C4932 /* Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -577,6 +880,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9B9264A228A5B2BA00B1BA7F /* Stash.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9B9264A328A5B2BA00B1BA7F /* Stash.xcdatamodel */,
+			);
+			currentVersion = 9B9264A328A5B2BA00B1BA7F /* Stash.xcdatamodel */;
+			path = Stash.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9B92644F28A5AE9800B1BA7F /* Project object */;
 }

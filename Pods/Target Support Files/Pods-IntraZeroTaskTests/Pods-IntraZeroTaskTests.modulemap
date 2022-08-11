@@ -1,0 +1,6 @@
+framework module Pods_IntraZeroTaskTests {
+  umbrella header "Pods-IntraZeroTaskTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
