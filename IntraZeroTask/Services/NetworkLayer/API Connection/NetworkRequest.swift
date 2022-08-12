@@ -17,7 +17,7 @@ enum NetworkRequest{
 extension NetworkRequest : TargetType {
     var baseURL: String {
         switch self {
-                 default : return "https://picsum.photos/v2/list?page=1&limit=20"
+                 default : return "https://picsum.photos/v2/list?page=1&"
         }
     }
     
@@ -25,10 +25,10 @@ extension NetworkRequest : TargetType {
         switch self {
        
         case .getDefaultPhotos:
-            return ""
+            return "limit=20"
           
         case.updatedPhotosList(let limit):
-            return ""
+            return "limit=\(limit)"
 
         }
     }
@@ -37,7 +37,7 @@ extension NetworkRequest : TargetType {
         switch self {
             case .getDefaultPhotos:
                 return .get
-            case .updatedPhotosList(limit: let limit):
+            case .updatedPhotosList:
                 return .get
         }
     }
@@ -47,7 +47,7 @@ extension NetworkRequest : TargetType {
             
         case .getDefaultPhotos:
             return .requestPlain
-        case .updatedPhotosList(limit: let limit):
+        case .updatedPhotosList:
             return .requestPlain
         }
     }

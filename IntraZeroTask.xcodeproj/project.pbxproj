@@ -27,6 +27,7 @@
 		9B9264A128A5B29000B1BA7F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A028A5B29000B1BA7F /* PersistenceController.swift */; };
 		9B9264A428A5B2BA00B1BA7F /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A228A5B2BA00B1BA7F /* Stash.xcdatamodeld */; };
 		9B9264A728A5B36B00B1BA7F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A628A5B36B00B1BA7F /* Photo.swift */; };
+		9B975E5528A6889000B4F41B /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B975E5428A6889000B4F41B /* Photos.swift */; };
 		F5B6B8B6D1ADC512F3F4ACDA /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4B52FCDB3D7B3E1275968D /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		9B9264A028A5B29000B1BA7F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		9B9264A328A5B2BA00B1BA7F /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
 		9B9264A628A5B36B00B1BA7F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		9B975E5428A6889000B4F41B /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		9F52803DE794A69CB9EE4729 /* Pods-IntraZeroTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTaskTests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTaskTests/Pods-IntraZeroTaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		E1DF6CA0A9163A92456C4932 /* Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-IntraZeroTask-IntraZeroTaskUITests/Pods-IntraZeroTask-IntraZeroTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +120,6 @@
 				3479A6BDBF8C3D55C0FE580B /* Pods-IntraZeroTaskTests.debug.xcconfig */,
 				9F52803DE794A69CB9EE4729 /* Pods-IntraZeroTaskTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -301,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9264A628A5B36B00B1BA7F /* Photo.swift */,
+				9B975E5428A6889000B4F41B /* Photos.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +551,7 @@
 				9B92645B28A5AE9800B1BA7F /* IntraZeroTaskApp.swift in Sources */,
 				9B9264A128A5B29000B1BA7F /* PersistenceController.swift in Sources */,
 				9B92648E28A5AFCC00B1BA7F /* PhotosDetails.swift in Sources */,
+				9B975E5528A6889000B4F41B /* Photos.swift in Sources */,
 				9B9264A728A5B36B00B1BA7F /* Photo.swift in Sources */,
 				9B92649928A5B12E00B1BA7F /* TargetType.swift in Sources */,
 				9B92648728A5AF0300B1BA7F /* PhotoListView.swift in Sources */,
