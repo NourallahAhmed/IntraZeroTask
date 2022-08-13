@@ -10,47 +10,48 @@ import Kingfisher
 
 
 struct PhotosDetails: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+//    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var url : String
-    var backgroundColor : UIColor
-    //@State var image : UIImage?
+//    var backgroundColor : UIColor
+    @State var backgroundColor2 : UIColor?
+    @State var image : UIImage?
+    var done = false
+    init(url : String) {
+            self.url = url
+    }
     var body: some View {
-        HStack{
-        KFImage(URL(string:   url))
-            
-            .loadImmediately()
-            .placeholder { Image("default") }
-            .resizable()
-            
-            .frame(width: 300, height: 300)
-            
-            .cornerRadius(20)
-            .shadow(radius: 5)
-           
-//            .swipeActions(edge: .trailing) {
-//                Button(role: .destructive) {
-//                    self.presentationMode.wrappedValue.dismiss()
-//                    print("Action")
-//                } label: {
-//
-//                }
-//            }
-            .padding()
-        }.onAppear{
-//            self.image =
-//            
-//            UIImage(data:NSData(contentsOf: NSURL(string: self.url)! as URL)! as Data)
-//            self.backgroundColor = image?.averageColor
+        VStack(alignment: .center){
+            Spacer()
+            KFImage(URL(string:   url))
+                .loadImmediately()
+                .placeholder { Image("default") }
+                .resizable()
+                .frame(width: 300, height: 300)
+                .cornerRadius(20)
+                .shadow(radius: 5)
+                .padding()
+            Spacer()
+        }.frame(
+              minWidth: 0,
+              maxWidth: .infinity,
+              minHeight: 0,
+              maxHeight: .infinity,
+              alignment: .topLeading
+            )
+        .onAppear{
+            self.image =
+            UIImage(data:NSData(contentsOf: NSURL(string: self.url)! as URL)! as Data)
+            self.backgroundColor2 = image?.averageColor
         }
-        .foregroundColor( Color(self.backgroundColor ?? .white) )
+        .background( Color(self.backgroundColor2 ?? .black) )
         
     }
 }
 
 struct PhotosDetails_Previews: PreviewProvider {
     static var previews: some View {
-        PhotosDetails(url: "", backgroundColor: .black)
+        PhotosDetails(url: "")//, backgroundColor: .black)
     }
 }
 

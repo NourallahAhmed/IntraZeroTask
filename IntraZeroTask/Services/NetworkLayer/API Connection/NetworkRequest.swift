@@ -11,13 +11,13 @@ import Alamofire
 enum NetworkRequest{
     case getDefaultPhotos
     case updatedPhotosList( limit : String)
-    
+    case changePage(page:String)
 }
 
 extension NetworkRequest : TargetType {
     var baseURL: String {
         switch self {
-                 default : return "https://picsum.photos/v2/list?page=1&"
+                 default : return "https://picsum.photos/v2/list?"
         }
     }
     
@@ -25,11 +25,13 @@ extension NetworkRequest : TargetType {
         switch self {
        
         case .getDefaultPhotos:
-            return "limit=20"
+            return "page=1&limit=20"
           
         case.updatedPhotosList(let limit):
             return "limit=\(limit)"
-
+            
+        case.changePage(let page):
+              return "page=\(page)&limit=20"
         }
     }
     
@@ -39,6 +41,8 @@ extension NetworkRequest : TargetType {
                 return .get
             case .updatedPhotosList:
                 return .get
+        case .changePage:
+              return  .get
         }
     }
     
@@ -48,6 +52,8 @@ extension NetworkRequest : TargetType {
         case .getDefaultPhotos:
             return .requestPlain
         case .updatedPhotosList:
+            return .requestPlain
+        case .changePage:
             return .requestPlain
         }
     }

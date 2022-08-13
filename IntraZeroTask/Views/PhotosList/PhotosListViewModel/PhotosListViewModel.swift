@@ -9,16 +9,14 @@ import Foundation
 import Network
 protocol photosListProtocol {
     func getPhotosList()
+    func changePage(page:String)
 }
 class PhotosListViewModel : ObservableObject , photosListProtocol {
 
-    
     @Published var photosList : [Photo] = [Photo] ()
   
     @Published var NetworkState : Bool = true
 
-
-    
     
     //MARK: Network
     var networkLayer = NetworkAPI.networkApi
@@ -50,4 +48,32 @@ class PhotosListViewModel : ObservableObject , photosListProtocol {
           }
           monitor.start(queue: queue)
     }
+    func changePage(page: String) {
+        print(photosList[0].id)
+
+        monitor.pathUpdateHandler = { [weak self] pathUpdateHandler  in
+                if pathUpdateHandler.status == .satisfied {
+                      DispatchQueue.main.sync {
+                          self?.NetworkState = true
+
+                      }
+                      DispatchQueue.global(qos: .userInitiated).async {
+                          self?.photosList = []
+                            self?.networkLayer.changePage(page: page ,completion: { result in
+                                self?.photosList = try! result.get() ?? []
+                                print(self?.photosList[0].id)
+                            })
+                        }
+                  }
+                  else{
+                      DispatchQueue.main.sync {
+                        //MARK: TO Change the backGround if there is no internet
+                          self?.NetworkState = false
+                          print(pathUpdateHandler.status)
+                      }
+                  }
+              }
+              monitor.start(queue: queue)
+        }
+    
 }
