@@ -25,7 +25,7 @@ extension NetworkRequest : TargetType {
         switch self {
        
         case .getDefaultPhotos:
-            return "page=1&limit=20"
+            return "page=1&limit=10"
           
         case.updatedPhotosList(let limit):
             return "limit=\(limit)"

@@ -7,27 +7,45 @@
 
 import SwiftUI
 import Kingfisher
-import UIImageColors
+//import UIImageColors
+//import swift_vibrant
 
+import ColorKit
 struct PhotosDetails: View {
 
     var url : String
     @State var backgroundColor2 : UIColor?
     @State var image : UIImage?
+    let image2 = UIImage(named: "test")
+
     var done = false
     init(url : String) {
-            self.url = url
+        self.url = url
         if self.url != "" {
-//        self.image =
-//        UIImage(data:NSData(contentsOf: NSURL(string: self.url)! as URL)! as Data)
-//        
-//        self.backgroundColor2 = image?.getColors()?.background
+            self.image =
+            UIImage(data:NSData(contentsOf: NSURL(string: self.url)! as URL)! as Data)
+
+//            guard let image = self.image else {
+//                return
+//            }
+//            guard let colors = try! self.image2?.dominantColors() else{
+//                print("Error")
+//                return
+//            }
+//            guard let palette = ColorPalette(orderedColors: colors, ignoreContrastRatio: true) else {
+//                print("fatalError")
+//                fatalError("Could not create palette")
+//            }
+//            self.backgroundColor2 = palette.background
+            
+
         }
     }
     var body: some View {
         VStack{
             Spacer()
-            KFImage(URL(string:   url))
+            
+            KFImage(URL(string: url))
                 .loadImmediately()
                 .placeholder { Image("default") }
                 .resizable()
@@ -35,14 +53,10 @@ struct PhotosDetails: View {
                 .cornerRadius(20)
                 .shadow(radius: 5)
                 .padding()
+                
             Spacer()
         }
-        .onAppear{
-  
-            
-        }
-        .background( Color(self.backgroundColor2 ?? .white) )
-        
+        .background(Color(backgroundColor2 ?? .white))
     }
 }
 
@@ -67,9 +81,9 @@ extension UIImage {
         let context = CIContext(options: [.workingColorSpace: kCFNull])
         
         context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
-        print("Color")
-        print(UIColor(red: CGFloat(bitmap[0])  / 255, green: CGFloat(bitmap[0])  / 255, blue: CGFloat(bitmap[0])  / 255, alpha: CGFloat(bitmap[0]) / 255  ).description)
-        
+//        print("Color")
+//        print(UIColor(red: CGFloat(bitmap[0])  / 255, green: CGFloat(bitmap[0])  / 255, blue: CGFloat(bitmap[0])  / 255, alpha: CGFloat(bitmap[0]) / 255  ).description)
+//
 
         return(UIColor(red: CGFloat(bitmap[0])  / 255, green: CGFloat(bitmap[1])  / 255, blue: CGFloat(bitmap[2])  / 255, alpha: CGFloat(bitmap[3]) / 255  ))
     }

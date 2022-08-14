@@ -11,11 +11,14 @@ struct PhotoListView: View {
     //MARK: CoreData
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var  managedObjectContext
-    @FetchRequest(entity: Photos.entity() , sortDescriptors: [NSSortDescriptor(keyPath: \Photos.id, ascending: true)])
-    private var localPhotos : FetchedResults <Photos>
-    
-    
+    @FetchRequest(entity: Photos.entity() ,
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Photos.id, ascending: true)])
+                private var localPhotos : FetchedResults <Photos>
     @StateObject private var photoListViewModel =  PhotosListViewModel()
+    
+    //MARK: InternetConnection
+    @StateObject private var networkConnection = NetworkManager()
+    
     
     @State private  var counter  = 0
     @State private  var selectedPhotoUrl : String?
@@ -23,47 +26,51 @@ struct PhotoListView: View {
     @State private var next = false
     @State private var Page = 1
     @State private var isChangePage : Bool = false
+    @State var start = true
     var body: some View {
         NavigationView {
-            VStack{
-                if self.photoListViewModel.photosList.count > 0 {
-                    Text("Welcome")
-                        .bold()
-                        .font(Font.custom("MyFont", size: 40))
-                        .foregroundColor(Color.red)
-                    if isChangePage == false {
-                        ScrollView{
+            //MARK: there is internet Connection
+            if self.networkConnection.NetworkState {
+                
+                VStack{
+                    
+                    if self.photoListViewModel.photosList.count > 0 {
+                        Text("Welcome")
+                            .bold()
+                            .font(Font.custom("MyFont", size: 40))
+                            .foregroundColor(Color.red)
+                        if self.photoListViewModel.photoLoaded {
                             
-                            ForEach(self.photoListViewModel.photosList, id: \.self) { photo in
-                                if counter != 5 {
-                                    VStack{
-                                        Spacer()
-                                        KFImage(URL(string:   photo.downloadUrl))
-                                            .retry(maxCount: 5, interval: .seconds(5))
-                                            .placeholder { Image("default") }
-                                            .resizable()
-                                            .frame(width: 300, height: 200)
-                                            .cornerRadius(20)
-                                            .shadow(radius: 5)
-                                            .onTapGesture {
-                                                print("clicked")
-                                                self.selectedPhotoUrl = photo.downloadUrl
-                                                self.navigationToggle.toggle()
-                                                print(navigationToggle)
-                                            }
-                                        Spacer()
-                                        Text("Auther : \(photo.author)")
-                                            .foregroundColor(Color.red)
-                                            .bold()
-                                            .padding()
-                                        Spacer()
-                                    }.onAppear{
-                                        counter += 1
+                            ScrollView {
+                                ForEach(self.photoListViewModel.photosListGrouped, id: \.self) { photosList in
+                                    ForEach(photosList) { photo in
+                                        VStack{
+                                            Spacer()
+                                            KFImage(URL(string:   photo.downloadUrl))
+                                                .retry(maxCount: 5, interval: .seconds(5))
+                                                .placeholder { Image("default") }
+                                                .resizable()
+                                                .frame(width: 300, height: 200)
+                                                .cornerRadius(20)
+                                                .shadow(radius: 5)
+                                                .onTapGesture {
+                                                    print("clicked")
+                                                    self.selectedPhotoUrl = photo.downloadUrl
+                                                    self.navigationToggle.toggle()
+                                                    print(navigationToggle)
+                                                }
+                                            Spacer()
+                                            Text("Auther : \(photo.author)")
+                                                .foregroundColor(Color.red)
+                                                .bold()
+                                                .padding()
+                                            Spacer()
+                                        }.onAppear{
+                                            counter += 1
+                                        }
+                                        
                                     }
                                     
-                                }
-                                
-                                if counter == 5 {
                                     VStack{
                                         Spacer()
                                         Image("default")
@@ -77,139 +84,141 @@ struct PhotoListView: View {
                                             .bold()
                                             .padding()
                                         Spacer()
-                                    }.onAppear{
-                                        counter = 0
                                     }
-                                    
                                 }
+                                
+                            }.onAppear{
+                                //TODO: Remove the Old data from coredata
+                                self.localPhotos.map { photo in
+                                    managedObjectContext.delete(photo)
+                                    PersistenceController.shared.save()
+                                }
+                                //TODO: Save into CoreData for Offline Storage
+                                self.photoListViewModel.photosList.map { photo in
+                                    var photos = Photos(context: managedObjectContext)
+                                    photos.id = photo.id
+                                    photos.url = photo.url
+                                    photos.downloadUrl = photo.downloadUrl
+                                    photos.auther = photo.author
+                                    photos.width = photo.width
+                                    photos.height = photo.height
+                                    PersistenceController.shared.save()
+                                }
+                                
                             }
-                            
-                        }.onAppear{
-                            //Save into CoreData for Offline Storage
-                            var photos = Photos(context: managedObjectContext)
-                            self.photoListViewModel.photosList.map { photo in
-                                photos.id = photo.id
-                                photos.url = photo.url
-                                photos.downloadUrl = photo.downloadUrl
-                                photos.auther = photo.author
-                                photos.width = photo.width
-                                photos.height = photo.height
-                                print(photos.id)
-                                PersistenceController.shared.save()
-                            }
-                            
-                            
+                          
                         }
-                        
-                    }
-                    else{
-                        //MARK: Display loading for the next page
-                        ProgressView()
-                        Text("Loading...")
-                            .font(Font.custom("MyFont", size: 30))
-                        
-                    }
-                    
-                    
-                    
-                
-            
-                //MARK: Handling the pages
-                HStack{
-                    if Page > 1 {
-                        Button("Previous"){
-                            if Page != 1 {
-                                self.Page -= 1
-                                //TODO: Send to vm to change the page
-                                self.photoListViewModel.changePage(page: String(self.Page))
-//                                self.isChangePage.toggle()
-                            }
-                        }
-                    }
-                    Spacer()
-                    Text("Page \(Page)")
-                    Spacer()
-                    Button("Next"){
-                        self.Page += 1
-                        //TODO: Send to vm to change the page
-                        self.photoListViewModel.changePage(page:String(self.Page))
-//                        self.isChangePage.toggle()
-
-                        
-                    }
-                }
-            
-            }
-            
-            else{
-                
-                //MARK: If there is no local data stored .. display the loading from network
-
-                if self.localPhotos.isEmpty {
-                    ProgressView()
-                    Text("Loading")
-                        .font(Font.custom("MyFont", size: 30))
-                }
-
-                //MARK: Show Local Photos
-                else{
-                    Text("From Local Photos")
-                        .bold()
-                        .font(Font.custom("MyFont", size: 40))
-                        .foregroundColor(Color.red)
-                    
-                    ForEach(self.localPhotos, id: \.self) { photo in
-                        if counter != 5 {
+                        else {
                             VStack{
                                 Spacer()
-                                KFImage(URL(string:   photo.downloadUrl ?? ""))
-                                    .retry(maxCount: 5, interval: .seconds(5))
-                                
-                                    .placeholder { Image("default") }
-                                    .resizable()
-                                    .frame(width: 300, height: 200)
-                                    .cornerRadius(20)
-                                    .shadow(radius: 5)
-                                    .onTapGesture {
-                                        print("clicked")
-                                        self.selectedPhotoUrl = photo.downloadUrl
-                                        self.navigationToggle.toggle()
-                                        print(navigationToggle)
-                                    }
+                                HStack{
+                                    Text("Please wait until the new photos loaded    ")
+                                        .font(Font.custom("MyFont", size: 20))
+                                    ProgressView()
+                                }
                                 Spacer()
-                                Text("Auther : \(photo.auther ?? " Unknown" )")
-                                    .bold()
-                                    .foregroundColor(Color.red)
-                                    .padding()
-                                Spacer()
-                            }.onAppear{
-                                counter += 1
                             }
-                            
                         }
+                        //MARK: Handling the pages
+                        HStack{
+                            if Page > 1 {
+                                Button("Previous"){
+                                    if Page != 1 {
+                                        self.Page -= 1
+                                        //TODO: Send to vm to change the page
+                                        if networkConnection.NetworkState {
+                                            self.photoListViewModel.changePage(page: String(self.Page))
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                            Spacer()
+                            Text("Page \(Page)")
+                            Spacer()
+                            Button("Next"){
+                                self.Page += 1
+                                //TODO: Send to vm to change the page
+                                if networkConnection.NetworkState {
+                                    self.photoListViewModel.changePage(page: String(self.Page))
+                                    
+                                }
+                                
+                            }
+                        }
+                        
                     }
+                    
+                    else{
+                        ProgressView()
+                        Text("Loading")
+                        
+                            .font(Font.custom("MyFont", size: 20))
+                    }
+                    //MARK: Navigation
+                    NavigationLink( "" , destination: PhotosDetails(url: self.selectedPhotoUrl ?? "" ),isActive: self.$navigationToggle)
+                    Spacer()
+                }.onAppear{
+                    //MARK: get the data from network
+                    if self.photoListViewModel.photosList.isEmpty {
+                        self.photoListViewModel.changePage(page: String(self.Page))
+                    }
+
                 }
             }
             
-            //MARK: Navigation
-            NavigationLink( "" , destination: PhotosDetails(url: self.selectedPhotoUrl ?? "" ),isActive: self.$navigationToggle)
-            Spacer()
-            
-            
-        }.onAppear{
-            //MARK: get the data from network
-            self.photoListViewModel.changePage(page: String(self.Page))
-            print("Pressed Next")
-            if Page > 0 {
-                self.next = true
+            //MARK: NO Internet Connection
+            else{
+                
+                //MARK: Showing the Local Photos
+                
+                
+                if self.localPhotos.isEmpty {
+                    Text("Offline Mode")
+                    Text("No Local Images")
+                }
+                else{
+                    
+                    VStack{
+                        Text("From Local Photos")
+                            .bold()
+                            .font(Font.custom("MyFont", size: 20))
+                            .foregroundColor(Color.red)
+                        ScrollView{
+                            ForEach(self.localPhotos, id: \.self) { photo in
+                                VStack{
+                                    Spacer()
+                                    KFImage(URL(string:   photo.downloadUrl ?? ""))
+                                        .retry(maxCount: 5, interval: .seconds(5))
+                                        .placeholder { Image("default") }
+                                        .resizable()
+                                        .frame(width: 300, height: 200)
+                                        .cornerRadius(20)
+                                        .shadow(radius: 5)
+                                        .onTapGesture {
+                                            print("clicked")
+                                            self.selectedPhotoUrl = photo.downloadUrl
+                                            self.navigationToggle.toggle()
+                                            print(navigationToggle)
+                                        }
+                                    Spacer()
+                                    Text("Auther : \(photo.auther ?? " Unknown" )")
+                                        .bold()
+                                        .foregroundColor(Color.red)
+                                        .padding()
+                                    Spacer()
+                                }
+                            }
+                        }
+                        //MARK: Navigation
+                        NavigationLink( "" , destination: PhotosDetails(url: self.selectedPhotoUrl ?? "" ),isActive: self.$navigationToggle)
+                        Spacer()
+                    }
+                }
             }
         }
     }
     
-    
-    
-}
-
 }
 
 struct PhotoListView_Previews: PreviewProvider {
@@ -219,56 +228,14 @@ struct PhotoListView_Previews: PreviewProvider {
 }
 
 
-//extension String {
-//    func load() -> UIImage{
-//        do{
-//
-//            guard let url = URL(string: self) else{
-//                return UIImage()
-//            }
-//
-//            let data : Data = try
-//            Data(contentsOf: url)
-//
-//            return UIImage(data: data) ?? UIImage()
-//
-//        }
-//        catch{
-//
-//        }
-//        return UIImage()
-//    }
-//}
-
-
-
-//MARK: consume network
-//                            VStack(alignment:.leading){
-//                                AsyncImage(url: URL(string: photo.downloadUrl)!)
-//                                    .frame(width: 128, height: 128)
-//                                    .cornerRadius(20)
-//                                    .shadow(radius: 5)
-//                            }
-//                                    Image(uiImage: photo.downloadUrl.load())
-//                                        .frame(width: 50 , height: 50)
-//                                        .cornerRadius(20)
-//                                        .shadow(radius: 5)
-//
-//MARK: Kingfisher slow down the data loading
-
-//                                    KFImage(URL(string:   photo.downloadUrl))
-//                                        .loadImmediately()
-//                                        .placeholder { Image("default") }
-//                                        .resizable()
-//                                        .frame(width: 128, height: 128)
-//                                        .cornerRadius(20)
-//                                        .shadow(radius: 5)
-
-//                                        .padding().onTapGesture {
-//                                            self.image =
-//
-//                                            UIImage(data:NSData(contentsOf: NSURL(string: photo.downloadUrl)! as URL)! as Data)
-//                                            self.backgroundColor = image?.averageColor ?? .black
-//                                            print(self.backgroundColor)
-//                                        }
-
+extension Array {
+    func dividedIntoGroups(of i: Int = 5) -> [[Element]] {
+        var copy = self
+        var res = [[Element]]()
+        while copy.count > i {
+            res.append( (0 ..< i).map { _ in copy.remove(at: 0) } )
+        }
+        res.append(copy)
+        return res
+    }
+}

@@ -2,3 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask-framewor
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework
+${BUILT_PRODUCTS_DIR}/swift-vibrant/swift_vibrant.framework

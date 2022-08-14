@@ -15,46 +15,28 @@ protocol photosListProtocol {
 class PhotosListViewModel : ObservableObject , photosListProtocol {
 
     @Published var photosList : [Photo] = [Photo] ()
-  
-    @Published var NetworkState : Bool = true
-    
+    @Published var photosListGrouped = [[Photo]]()
+    @Published var photoLoaded = false
+
     
     //MARK: Network
     var networkLayer = NetworkAPI.networkApi
-    //TODO: CheckNetworkConnection
-    let queue = DispatchQueue(label: "InternetConnectionMonitor")
-    let monitor = NWPathMonitor()
-    let monitor2 = NWPathMonitor()
+   
     func changePage(page: String) {
-
-//        monitor.pathUpdateHandler = { [weak self] pathUpdateHandler  in
-//                if pathUpdateHandler.status == .satisfied {
-//                      DispatchQueue.main.sync {
-//                          self?.NetworkState = true
-//
-//                      }
-                      DispatchQueue.global(qos: .userInitiated).async {
-                            self.networkLayer.changePage(page: page ,completion: { result in
-                                
-                                DispatchQueue.main.async {
-                                    self.photosList = try! result.get() ?? []
-                                    
-                                    
-                                }
-                          
-                            })
-                        }
-//                    }
-//                  else{
-//                      DispatchQueue.main.sync {
-//                        //MARK: TO Change the backGround if there is no internet
-//                          self?.NetworkState = false
-//                      }
-//                  }
-//              }
-//        monitor.start(queue: queue)
-
+        self.photoLoaded = false
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.networkLayer.changePage(page: page ,completion: { result in
+                DispatchQueue.main.async {
+                    guard let photos = try? result.get() else{
+                        return
+                    }
+                    self.photosList = photos
+                    self.photosListGrouped =  self.photosList.dividedIntoGroups(of: 5)
+                    self.photoLoaded = true
+                }
+            })
         }
+    }
     
   
 }
