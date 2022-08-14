@@ -11,8 +11,8 @@ struct Photo: Codable , Hashable ,Identifiable  {
 
     let id: String
     let author: String
-    let width: Int
-    let height: Int
+    let width: Int16
+    let height: Int16
     let url: String
     let downloadUrl: String
 

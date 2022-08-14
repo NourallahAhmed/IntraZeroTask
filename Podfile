@@ -8,6 +8,7 @@ target 'IntraZeroTask' do
   # Pods for IntraZeroTask
   pod 'Alamofire','~> 5.0.0-rc.2'
   pod 'Kingfisher', '~> 6.3.1'
+  pod 'UIImageColors'
   target 'IntraZeroTaskTests' do
     inherit! :search_paths
     # Pods for testing

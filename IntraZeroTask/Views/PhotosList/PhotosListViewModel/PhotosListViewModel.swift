@@ -7,8 +7,9 @@
 
 import Foundation
 import Network
+import CoreData
+
 protocol photosListProtocol {
-    func getPhotosList()
     func changePage(page:String)
 }
 class PhotosListViewModel : ObservableObject , photosListProtocol {
@@ -16,64 +17,44 @@ class PhotosListViewModel : ObservableObject , photosListProtocol {
     @Published var photosList : [Photo] = [Photo] ()
   
     @Published var NetworkState : Bool = true
-
+    
     
     //MARK: Network
     var networkLayer = NetworkAPI.networkApi
     //TODO: CheckNetworkConnection
     let queue = DispatchQueue(label: "InternetConnectionMonitor")
     let monitor = NWPathMonitor()
-    
-    
-    func getPhotosList() {
-        monitor.pathUpdateHandler = { [weak self] pathUpdateHandler  in
-            if pathUpdateHandler.status == .satisfied {
-                  DispatchQueue.main.sync {
-                      self?.NetworkState = true
-
-                  }
-                  DispatchQueue.global(qos: .userInitiated).async {
-                        self?.networkLayer.getDetaultPhotosList(completion: { result in
-                            self?.photosList = try! result.get() ?? []
-                        })
-                    }
-              }
-              else{
-                  DispatchQueue.main.sync {
-                    //MARK: TO Change the backGround if there is no internet
-                      self?.NetworkState = false
-                      print(pathUpdateHandler.status)
-                  }
-              }
-          }
-          monitor.start(queue: queue)
-    }
+    let monitor2 = NWPathMonitor()
     func changePage(page: String) {
-        print(photosList[0].id)
 
-        monitor.pathUpdateHandler = { [weak self] pathUpdateHandler  in
-                if pathUpdateHandler.status == .satisfied {
-                      DispatchQueue.main.sync {
-                          self?.NetworkState = true
-
-                      }
+//        monitor.pathUpdateHandler = { [weak self] pathUpdateHandler  in
+//                if pathUpdateHandler.status == .satisfied {
+//                      DispatchQueue.main.sync {
+//                          self?.NetworkState = true
+//
+//                      }
                       DispatchQueue.global(qos: .userInitiated).async {
-                          self?.photosList = []
-                            self?.networkLayer.changePage(page: page ,completion: { result in
-                                self?.photosList = try! result.get() ?? []
-                                print(self?.photosList[0].id)
+                            self.networkLayer.changePage(page: page ,completion: { result in
+                                
+                                DispatchQueue.main.async {
+                                    self.photosList = try! result.get() ?? []
+                                    
+                                    
+                                }
+                          
                             })
                         }
-                  }
-                  else{
-                      DispatchQueue.main.sync {
-                        //MARK: TO Change the backGround if there is no internet
-                          self?.NetworkState = false
-                          print(pathUpdateHandler.status)
-                      }
-                  }
-              }
-              monitor.start(queue: queue)
+//                    }
+//                  else{
+//                      DispatchQueue.main.sync {
+//                        //MARK: TO Change the backGround if there is no internet
+//                          self?.NetworkState = false
+//                      }
+//                  }
+//              }
+//        monitor.start(queue: queue)
+
         }
     
+  
 }
