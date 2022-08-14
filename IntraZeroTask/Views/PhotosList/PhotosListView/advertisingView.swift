@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct advertisingView: View {
-        let images = ["macAD" ,"papajohnsAD" , "cocacolaAD"  ]
+        let images = ["macAD" ,"papajohnsAd" , "cocacolaAD"  ]
         @State var activeImageIndex = 0
 
-        let imageSwitchTimer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+        let imageSwitchTimer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
         var body : some View{
             VStack{
@@ -20,7 +20,7 @@ struct advertisingView: View {
                 .frame(width: 400, height: 200)
                 .cornerRadius(20)
                 .padding()
-                    .onReceive(imageSwitchTimer) { _ in
+                .onReceive(imageSwitchTimer) { _ in
                     self.activeImageIndex = (self.activeImageIndex + 1) % self.images.count
                 }
 

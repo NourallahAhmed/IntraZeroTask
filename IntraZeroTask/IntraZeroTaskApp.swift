@@ -20,7 +20,7 @@ struct IntraZeroTaskApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            PhotoListView()
+            SplachScreenView()
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
         }.onChange(of: scenePhase) { newScenePhase in

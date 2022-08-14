@@ -19,26 +19,22 @@ struct PhotoListView: View {
     //MARK: InternetConnection
     @StateObject private var networkConnection = NetworkManager()
     
-    
-    @State private  var counter  = 0
     @State private  var selectedPhotoUrl : String?
     @State private var navigationToggle : Bool = false
     @State private var next = false
     @State private var Page = 1
     @State private var isChangePage : Bool = false
-    @State var start = true
+
     var body: some View {
         NavigationView {
             //MARK: there is internet Connection
             if self.networkConnection.NetworkState {
-                
                 VStack{
-                    
-                    if self.photoListViewModel.photosList.count > 0 {
+                    if self.photoListViewModel.photoLoaded {
                         Text("Welcome")
                             .bold()
-                            .font(Font.custom("MyFont", size: 40))
-                            .foregroundColor(Color.red)
+                            .font(Font.custom("MyFont", size: 20))
+                            .foregroundColor(Color.blue)
                         if self.photoListViewModel.photoLoaded {
                             
                             ScrollView {
@@ -54,56 +50,31 @@ struct PhotoListView: View {
                                                 .cornerRadius(20)
                                                 .shadow(radius: 5)
                                                 .onTapGesture {
-                                                    print("clicked")
                                                     self.selectedPhotoUrl = photo.downloadUrl
                                                     self.navigationToggle.toggle()
                                                     print(navigationToggle)
                                                 }
+                                               
                                             Spacer()
                                             Text("Auther : \(photo.author)")
-                                                .foregroundColor(Color.red)
+                                                .foregroundColor(Color.black)
                                                 .bold()
                                                 .padding()
                                             Spacer()
-                                        }.onAppear{
-                                            counter += 1
                                         }
                                         
                                     }
                                     
                                     VStack{
                                         Spacer()
-                                        Image("default")
-                                        
-                                            .frame(width: 300, height: 200)
-                                            .cornerRadius(20)
-                                            .shadow(radius: 5)
-                                        
-                                        Spacer()
-                                        Text("Ad PlaceHolder")
-                                            .bold()
-                                            .padding()
+                                        advertisingView()
                                         Spacer()
                                     }
                                 }
                                 
                             }.onAppear{
-                                //TODO: Remove the Old data from coredata
-                                self.localPhotos.map { photo in
-                                    managedObjectContext.delete(photo)
-                                    PersistenceController.shared.save()
-                                }
-                                //TODO: Save into CoreData for Offline Storage
-                                self.photoListViewModel.photosList.map { photo in
-                                    var photos = Photos(context: managedObjectContext)
-                                    photos.id = photo.id
-                                    photos.url = photo.url
-                                    photos.downloadUrl = photo.downloadUrl
-                                    photos.auther = photo.author
-                                    photos.width = photo.width
-                                    photos.height = photo.height
-                                    PersistenceController.shared.save()
-                                }
+                                handlingCoreDataStuff()
+                               
                                 
                             }
                           
@@ -219,6 +190,27 @@ struct PhotoListView: View {
         }
     }
     
+    
+    
+    
+    func handlingCoreDataStuff(){
+        //TODO: Remove the Old data from coredata
+        self.localPhotos.map { photo in
+            managedObjectContext.delete(photo)
+            PersistenceController.shared.save()
+        }
+        //TODO: Save into CoreData for Offline Storage
+        self.photoListViewModel.photosList.map { photo in
+            var photos = Photos(context: managedObjectContext)
+            photos.id = photo.id
+            photos.url = photo.url
+            photos.downloadUrl = photo.downloadUrl
+            photos.auther = photo.author
+            photos.width = photo.width
+            photos.height = photo.height
+            PersistenceController.shared.save()
+        }
+    }
 }
 
 struct PhotoListView_Previews: PreviewProvider {
@@ -239,3 +231,5 @@ extension Array {
         return res
     }
 }
+
+
