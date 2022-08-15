@@ -15,7 +15,8 @@ struct PhotoListView: View {
                   sortDescriptors: [NSSortDescriptor(keyPath: \Photos.id, ascending: true)])
                 private var localPhotos : FetchedResults <Photos>
     @StateObject private var photoListViewModel =  PhotosListViewModel()
-    
+    @StateObject private var PhotoDetailsViewModel = PhotosDetailsViewModel.shared
+
     //MARK: InternetConnection
     @StateObject private var networkConnection = NetworkManager()
     
@@ -30,7 +31,7 @@ struct PhotoListView: View {
             //MARK: there is internet Connection
             if self.networkConnection.NetworkState {
                 VStack{
-                    if self.photoListViewModel.photoLoaded {
+                    if self.photoListViewModel.photosList.count > 0  {
                         Text("Welcome")
                             .bold()
                             .font(Font.custom("MyFont", size: 20))
@@ -53,6 +54,8 @@ struct PhotoListView: View {
                                                     self.selectedPhotoUrl = photo.downloadUrl
                                                     self.navigationToggle.toggle()
                                                     print(navigationToggle)
+                                                    self.PhotoDetailsViewModel.getBackgoundColor(url: photo.downloadUrl)
+
                                                 }
                                                
                                             Spacer()

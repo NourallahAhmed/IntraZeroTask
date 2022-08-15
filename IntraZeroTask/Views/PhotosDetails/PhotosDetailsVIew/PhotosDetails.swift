@@ -7,39 +7,24 @@
 
 import SwiftUI
 import Kingfisher
-//import UIImageColors
+import UIImageColors
 //import swift_vibrant
 
-import ColorKit
+//import ColorKit
 struct PhotosDetails: View {
 
     var url : String
-    @State var backgroundColor2 : UIColor?
-    @State var image : UIImage?
-    let image2 = UIImage(named: "test")
+    @StateObject private var PhotoDetailsViewModel = PhotosDetailsViewModel.shared
+    @State private var backgroundColor2 : UIColor?
+    @State private var backgroundColorHex : String?
+    @State  private var  imageData : Data?
 
-    var done = false
+    @State var image : UIImage?
     init(url : String) {
         self.url = url
-        if self.url != "" {
-            self.image =
-            UIImage(data:NSData(contentsOf: NSURL(string: self.url)! as URL)! as Data)
-
-//            guard let image = self.image else {
-//                return
-//            }
-//            guard let colors = try! self.image2?.dominantColors() else{
-//                print("Error")
-//                return
-//            }
-//            guard let palette = ColorPalette(orderedColors: colors, ignoreContrastRatio: true) else {
-//                print("fatalError")
-//                fatalError("Could not create palette")
-//            }
-//            self.backgroundColor2 = palette.background
-            
-
-        }
+//        if self.url != "" {
+//            self.PhotoDetailsViewModel.getBackgoundColor(url: url)
+//        }
     }
     var body: some View {
         VStack{
@@ -56,7 +41,7 @@ struct PhotosDetails: View {
                 
             Spacer()
         }
-        .background(Color(backgroundColor2 ?? .white))
+        .background(Color(self.PhotoDetailsViewModel.backgroundColor ?? .gray ))
     }
 }
 
@@ -70,7 +55,7 @@ struct PhotosDetails_Previews: PreviewProvider {
 
 extension UIImage {
     var averageColor: UIColor? {
-        
+
         guard let inputImage = CIImage(image: self) else { return nil }
         let extentVector = CIVector(x: inputImage.extent.origin.x, y: inputImage.extent.origin.y, z: inputImage.extent.size.width, w: inputImage.extent.size.height)
 
@@ -80,11 +65,11 @@ extension UIImage {
         var bitmap = [UInt8](repeating: 0, count: 4)
         let context = CIContext(options: [.workingColorSpace: kCFNull])
         
-        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: .RGBA8, colorSpace: nil)
-//        print("Color")
-//        print(UIColor(red: CGFloat(bitmap[0])  / 255, green: CGFloat(bitmap[0])  / 255, blue: CGFloat(bitmap[0])  / 255, alpha: CGFloat(bitmap[0]) / 255  ).description)
-//
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1), format: CIFormat.RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
 
-        return(UIColor(red: CGFloat(bitmap[0])  / 255, green: CGFloat(bitmap[1])  / 255, blue: CGFloat(bitmap[2])  / 255, alpha: CGFloat(bitmap[3]) / 255  ))
+        let averageColor = UIColor(red: CGFloat(bitmap[0]) / 255.0, green: CGFloat(bitmap[1]) / 255.0, blue: CGFloat(bitmap[2]) / 255.0, alpha: CGFloat(bitmap[3]) / 255.0)
+        print(averageColor)
+        return averageColor
+    
     }
 }
