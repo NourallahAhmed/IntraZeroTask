@@ -9,8 +9,6 @@ import Foundation
 import Alamofire
 
 protocol NetworkAPIProtocol {
-//    func loginCustomer(completion: @escaping(Result<CustomersResponse?, NSError>) -> Void)
-    func getDetaultPhotosList(completion: @escaping(Result<[Photo]?, NSError>) -> Void)
     func changePage(page:String, completion: @escaping(Result<[Photo]?, NSError>) -> Void)
 }
 class NetworkAPI: BaseAPI<NetworkRequest>, NetworkAPIProtocol {
@@ -22,13 +20,7 @@ class NetworkAPI: BaseAPI<NetworkRequest>, NetworkAPIProtocol {
         }
     }
     
-    
-    func getDetaultPhotosList(completion: @escaping (Result<[Photo]?, NSError>) -> Void) {
-        self.fetchData(target: .getDefaultPhotos , responseClass: [Photo].self){ (result) in
-                   completion(result)
-               }
-    }
-    
+   
     
     
    

@@ -19,7 +19,7 @@ class PhotosDetailsViewModel : ObservableObject {
             DispatchQueue.main.async {
                 self.imageData = imageData2
                 let image = UIImage(data: self.imageData!)
-                self.backgroundColor = image?.getColors()?.background                
+                self.backgroundColor = image?.getColors()?.primary
             }
         }
         
