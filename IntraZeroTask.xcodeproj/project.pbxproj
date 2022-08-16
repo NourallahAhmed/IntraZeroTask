@@ -27,6 +27,7 @@
 		9B9264A128A5B29000B1BA7F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A028A5B29000B1BA7F /* PersistenceController.swift */; };
 		9B9264A428A5B2BA00B1BA7F /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A228A5B2BA00B1BA7F /* Stash.xcdatamodeld */; };
 		9B9264A728A5B36B00B1BA7F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9264A628A5B36B00B1BA7F /* Photo.swift */; };
+		9B9ECA4128AC304F00E36D3A /* ViewDidLoadModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9ECA4028AC304F00E36D3A /* ViewDidLoadModifer.swift */; };
 		9BA6F6AD28A97E64006E37C7 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6F6AC28A97E64006E37C7 /* SplashScreenView.swift */; };
 		9BACFD1128A9155900FB0153 /* Network Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BACFD1028A9155900FB0153 /* Network Manager.swift */; };
 		9BACFD1628A9721900FB0153 /* advertisingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BACFD1528A9721900FB0153 /* advertisingView.swift */; };
@@ -79,6 +80,7 @@
 		9B9264A028A5B29000B1BA7F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		9B9264A328A5B2BA00B1BA7F /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
 		9B9264A628A5B36B00B1BA7F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		9B9ECA4028AC304F00E36D3A /* ViewDidLoadModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifer.swift; sourceTree = "<group>"; };
 		9BA6F6AC28A97E64006E37C7 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		9BACFD1028A9155900FB0153 /* Network Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Manager.swift"; sourceTree = "<group>"; };
 		9BACFD1528A9721900FB0153 /* advertisingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = advertisingView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		9B92649228A5B03500B1BA7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9B9ECA3F28AC303500E36D3A /* ViewDidLoad */,
 				9BA6F6AB28A97E2E006E37C7 /* SplashScreen */,
 				9B92648B28A5AF9C00B1BA7F /* PhotosDetails */,
 				9B92648428A5AEC100B1BA7F /* PhotosList */,
@@ -311,6 +314,14 @@
 				9B9264A628A5B36B00B1BA7F /* Photo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9B9ECA3F28AC303500E36D3A /* ViewDidLoad */ = {
+			isa = PBXGroup;
+			children = (
+				9B9ECA4028AC304F00E36D3A /* ViewDidLoadModifer.swift */,
+			);
+			path = ViewDidLoad;
 			sourceTree = "<group>";
 		};
 		9BA6F6AB28A97E2E006E37C7 /* SplashScreen */ = {
@@ -574,6 +585,7 @@
 				9B92649128A5AFFD00B1BA7F /* PhotosDetailsViewModel.swift in Sources */,
 				9B9264A428A5B2BA00B1BA7F /* Stash.xcdatamodeld in Sources */,
 				9B92649C28A5B18800B1BA7F /* NetworkRequest.swift in Sources */,
+				9B9ECA4128AC304F00E36D3A /* ViewDidLoadModifer.swift in Sources */,
 				9B92649728A5B0F700B1BA7F /* BaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

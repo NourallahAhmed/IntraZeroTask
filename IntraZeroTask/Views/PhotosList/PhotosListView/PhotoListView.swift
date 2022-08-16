@@ -132,7 +132,7 @@ struct PhotoListView: View {
                     //MARK: Navigation
                     NavigationLink( "" , destination: PhotosDetails(url: self.selectedPhotoUrl ?? "" ),isActive: self.$navigationToggle)
                     Spacer()
-                }.onAppear{
+                }.onLoad{
                     //MARK: get the data from network
                     if self.photoListViewModel.photosList.isEmpty {
                         self.photoListViewModel.changePage(page: String(self.Page))

@@ -38,7 +38,7 @@ struct SplachScreenView: View{
                         self.activeColorIndex  += 1
                     }
                     .onAppear{
-                        withAnimation(.easeIn(duration:0.8)){
+                        withAnimation(.easeIn(duration:0.2)){
                             self.movement += 150
                         }
                     }
@@ -57,9 +57,9 @@ struct SplachScreenView: View{
                     self.opacity = 1.0
                 }
            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                self.isActive = true
-            }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+                    self.isActive = true
+                }
         }
         }
     }
