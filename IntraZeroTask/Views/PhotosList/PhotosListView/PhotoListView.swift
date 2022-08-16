@@ -65,7 +65,9 @@ struct PhotoListView: View {
                                                 .padding()
                                             Spacer()
                                         }
-                                        
+//                                        .animation(.interpolatingSpring(stiffness: 50, damping: 1))
+//                                        .animation(.easeOut, value: 0.2)
+
                                     }
                                     
                                     VStack{

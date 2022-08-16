@@ -29,7 +29,7 @@ struct PhotosDetails: View {
     var body: some View {
         VStack{
             Spacer()
-            
+            if self.PhotoDetailsViewModel.loaded {
             KFImage(URL(string: url))
                 .loadImmediately()
                 .placeholder { Image("default") }
@@ -38,7 +38,9 @@ struct PhotosDetails: View {
                 .cornerRadius(20)
                 .shadow(radius: 5)
                 .padding()
-                
+            }else{
+                ProgressView()
+            }
             Spacer()
         }
         .background(Color(self.PhotoDetailsViewModel.backgroundColor ?? .gray ))

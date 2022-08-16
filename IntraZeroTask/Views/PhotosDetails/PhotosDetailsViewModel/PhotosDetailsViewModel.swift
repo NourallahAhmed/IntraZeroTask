@@ -11,6 +11,7 @@ import UIImageColors
 class PhotosDetailsViewModel : ObservableObject {
     @Published var backgroundColor : UIColor?
     private var imageData : Data?
+    @Published var loaded = false
     static var shared = PhotosDetailsViewModel()
     func getBackgoundColor(url : String){
         self.backgroundColor = .white
@@ -20,6 +21,7 @@ class PhotosDetailsViewModel : ObservableObject {
                 self.imageData = imageData2
                 let image = UIImage(data: self.imageData!)
                 self.backgroundColor = image?.getColors()?.primary
+                self.loaded = true
             }
         }
         
