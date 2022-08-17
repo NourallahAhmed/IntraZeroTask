@@ -14,17 +14,13 @@ import UIImageColors
 struct PhotosDetails: View {
 
     var url : String
-    @StateObject private var PhotoDetailsViewModel = PhotosDetailsViewModel.shared
-    @State private var backgroundColor2 : UIColor?
-    @State private var backgroundColorHex : String?
+    @StateObject private var PhotoDetailsViewModel = DependencyProvider.photoDetailsViewModelInstance
+    @State private var backgroundColor : UIColor?
     @State  private var  imageData : Data?
 
     @State var image : UIImage?
     init(url : String) {
         self.url = url
-//        if self.url != "" {
-//            self.PhotoDetailsViewModel.getBackgoundColor(url: url)
-//        }
     }
     var body: some View {
         VStack{
@@ -39,11 +35,18 @@ struct PhotosDetails: View {
                 .shadow(radius: 5)
                 .padding()
             }else{
-                ProgressView()
+                ProgressView().frame(width: UIScreen.main.bounds.width / 2 , height: UIScreen.main.bounds.height / 4)
             }
             Spacer()
         }
-        .background(Color(self.PhotoDetailsViewModel.backgroundColor ?? .gray ))
+        .onLoad{
+            self.PhotoDetailsViewModel.getBackgoundColor(url: self.url)
+            self.backgroundColor = self.PhotoDetailsViewModel.backgroundColor ?? .white
+        }
+        .background(Color( self.PhotoDetailsViewModel.backgroundColor ?? .white))
+        .onDisappear{
+            self.PhotoDetailsViewModel.backgroundColor = .white
+        }
     }
 }
 

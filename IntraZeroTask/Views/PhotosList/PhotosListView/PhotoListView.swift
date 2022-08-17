@@ -14,11 +14,11 @@ struct PhotoListView: View {
     @FetchRequest(entity: Photos.entity() ,
                   sortDescriptors: [NSSortDescriptor(keyPath: \Photos.id, ascending: true)])
                 private var localPhotos : FetchedResults <Photos>
-    @StateObject private var photoListViewModel =  PhotosListViewModel()
-    @StateObject private var PhotoDetailsViewModel = PhotosDetailsViewModel.shared
+    @StateObject private var photoListViewModel :  PhotosListViewModel
+    @StateObject private var PhotoDetailsViewModel : PhotosDetailsViewModel
 
     //MARK: InternetConnection
-    @StateObject private var networkConnection = NetworkManager()
+    @StateObject private var networkConnection : NetworkManager
     
     @State private  var selectedPhotoUrl : String?
     @State private var navigationToggle : Bool = false
@@ -26,6 +26,12 @@ struct PhotoListView: View {
     @State private var Page = 1
     @State private var isChangePage : Bool = false
 
+    init(photoListVM : PhotosListViewModel , photoDetailsVM : PhotosDetailsViewModel , networkManager : NetworkManager) {
+        _PhotoDetailsViewModel = StateObject(wrappedValue: photoDetailsVM)
+        _photoListViewModel = StateObject(wrappedValue: photoListVM)
+        _networkConnection = StateObject(wrappedValue: networkManager)
+
+    }
     var body: some View {
         NavigationView {
             //MARK: there is internet Connection
@@ -220,7 +226,7 @@ struct PhotoListView: View {
 
 struct PhotoListView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoListView()
+        PhotoListView(photoListVM: DependencyProvider.photoListViewModelInstance, photoDetailsVM: DependencyProvider.photoDetailsViewModelInstance, networkManager: DependencyProvider.networkManager)
     }
 }
 

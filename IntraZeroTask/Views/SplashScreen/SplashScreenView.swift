@@ -26,8 +26,7 @@ struct SplachScreenView: View{
     var body : some View {
         
         if isActive{
-            
-            PhotoListView()
+            DependencyProvider.photoListViewInstance
         }
         else{
         VStack{

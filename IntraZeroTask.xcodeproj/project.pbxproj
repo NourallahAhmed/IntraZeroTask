@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07A09516BF3F53354671E709 /* Pods_IntraZeroTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5446B78D8E734F078CEF2604 /* Pods_IntraZeroTaskTests.framework */; };
 		646C39EECAE004B811E59B6C /* Pods_IntraZeroTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0123F9C2BBEF3F31BE32F203 /* Pods_IntraZeroTask.framework */; };
+		9B6BBFFF28AD3FC600FB597C /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6BBFFE28AD3FC600FB597C /* DependencyProvider.swift */; };
 		9B92645B28A5AE9800B1BA7F /* IntraZeroTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92645A28A5AE9800B1BA7F /* IntraZeroTaskApp.swift */; };
 		9B92645D28A5AE9800B1BA7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92645C28A5AE9800B1BA7F /* ContentView.swift */; };
 		9B92645F28A5AE9C00B1BA7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B92645E28A5AE9C00B1BA7F /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		5446B78D8E734F078CEF2604 /* Pods_IntraZeroTaskTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTaskTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54B538F0F4B6D92D16FCF38F /* Pods-IntraZeroTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntraZeroTask.debug.xcconfig"; path = "Target Support Files/Pods-IntraZeroTask/Pods-IntraZeroTask.debug.xcconfig"; sourceTree = "<group>"; };
 		9A4B52FCDB3D7B3E1275968D /* Pods_IntraZeroTask_IntraZeroTaskUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntraZeroTask_IntraZeroTaskUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B6BBFFE28AD3FC600FB597C /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		9B92645728A5AE9800B1BA7F /* IntraZeroTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntraZeroTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92645A28A5AE9800B1BA7F /* IntraZeroTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntraZeroTaskApp.swift; sourceTree = "<group>"; };
 		9B92645C28A5AE9800B1BA7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B6BBFFC28AD3F7200FB597C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B9ECA3F28AC303500E36D3A /* ViewDidLoad */,
+				9B6BBFFD28AD3F9E00FB597C /* DependencyProvider */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9B6BBFFD28AD3F9E00FB597C /* DependencyProvider */ = {
+			isa = PBXGroup;
+			children = (
+				9B6BBFFE28AD3FC600FB597C /* DependencyProvider.swift */,
+			);
+			path = DependencyProvider;
+			sourceTree = "<group>";
+		};
 		9B92644E28A5AE9800B1BA7F = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +183,7 @@
 		9B92645928A5AE9800B1BA7F /* IntraZeroTask */ = {
 			isa = PBXGroup;
 			children = (
+				9B6BBFFC28AD3F7200FB597C /* Utils */,
 				9B9264A528A5B35500B1BA7F /* Model */,
 				9B92649328A5B04800B1BA7F /* Services */,
 				9B92649228A5B03500B1BA7F /* Views */,
@@ -255,7 +275,6 @@
 		9B92649228A5B03500B1BA7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9B9ECA3F28AC303500E36D3A /* ViewDidLoad */,
 				9BA6F6AB28A97E2E006E37C7 /* SplashScreen */,
 				9B92648B28A5AF9C00B1BA7F /* PhotosDetails */,
 				9B92648428A5AEC100B1BA7F /* PhotosList */,
@@ -585,6 +604,7 @@
 				9B92649128A5AFFD00B1BA7F /* PhotosDetailsViewModel.swift in Sources */,
 				9B9264A428A5B2BA00B1BA7F /* Stash.xcdatamodeld in Sources */,
 				9B92649C28A5B18800B1BA7F /* NetworkRequest.swift in Sources */,
+				9B6BBFFF28AD3FC600FB597C /* DependencyProvider.swift in Sources */,
 				9B9ECA4128AC304F00E36D3A /* ViewDidLoadModifer.swift in Sources */,
 				9B92649728A5B0F700B1BA7F /* BaseAPI.swift in Sources */,
 			);

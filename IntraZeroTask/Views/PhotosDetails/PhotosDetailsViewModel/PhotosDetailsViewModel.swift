@@ -12,7 +12,7 @@ class PhotosDetailsViewModel : ObservableObject {
     @Published var backgroundColor : UIColor?
     private var imageData : Data?
     @Published var loaded = false
-    static var shared = PhotosDetailsViewModel()
+  
     func getBackgoundColor(url : String){
         self.backgroundColor = .white
         DispatchQueue.global(qos: .userInteractive).async {

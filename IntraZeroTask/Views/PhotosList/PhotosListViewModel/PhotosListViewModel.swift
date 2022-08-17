@@ -20,7 +20,10 @@ class PhotosListViewModel : ObservableObject , photosListProtocol {
 
     
     //MARK: Network
-    var networkLayer = NetworkAPI.networkApi
+    var networkLayer  : NetworkAPIProtocol
+    init(networkLayer : NetworkAPIProtocol) {
+        self.networkLayer = networkLayer
+    }
    
     func changePage(page: String) {
         self.photoLoaded = false
